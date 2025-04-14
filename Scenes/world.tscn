@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://8sxvd6u3tmre"]
+[gd_scene load_steps=8 format=3 uid="uid://8sxvd6u3tmre"]
 
 [ext_resource type="Texture2D" uid="uid://dkhcrtt41uhkc" path="res://Materials/Textures/GridTexture/PNG/Dark/texture_01.png" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://daukbhpgwxt7v" path="res://Scenes/ball.tscn" id="2_go701"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go701"]
 albedo_texture = ExtResource("1_a02cp")
@@ -37,3 +38,6 @@ environment = SubResource("Environment_5a7ea")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.192608, 0.981276, 0, -0.981276, -0.192608, 0, 5.78522, 0)
+
+[node name="Ball" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.667971, 0)
