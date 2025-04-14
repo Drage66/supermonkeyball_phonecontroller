@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://8sxvd6u3tmre"]
+[gd_scene load_steps=12 format=3 uid="uid://8sxvd6u3tmre"]
 
 [ext_resource type="Texture2D" uid="uid://dkhcrtt41uhkc" path="res://Materials/Textures/GridTexture/PNG/Dark/texture_01.png" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://daukbhpgwxt7v" path="res://Scenes/ball.tscn" id="2_go701"]
+[ext_resource type="PackedScene" uid="uid://c7i21mqng1n2f" path="res://Tracks/track1.glb" id="3_8j60k"]
+[ext_resource type="Script" uid="uid://dfx6e248ao60a" path="res://Scripts/controller.gd" id="4_5ukr8"]
+[ext_resource type="Shader" uid="uid://bpnlhlyij554o" path="res://Scenes/track.tres" id="4_fo5ed"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go701"]
 albedo_texture = ExtResource("1_a02cp")
@@ -26,18 +29,34 @@ tonemap_mode = 3
 glow_enabled = true
 glow_bloom = 0.25
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ukr8"]
+render_priority = 0
+shader = ExtResource("4_fo5ed")
+
 [node name="World" type="Node3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.82209, 0, 0, 0, 5.82209, 0, 0, 0, 5.82209, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_go701")
 mesh = SubResource("PlaneMesh_5a7ea")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5a7ea")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.897989, 0.440018, 0, -0.440018, 0.897989, 0, 2.78522, 5)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.192608, 0.981276, 0, -0.981276, -0.192608, 0, 5.78522, 0)
 
 [node name="Ball" parent="." instance=ExtResource("2_go701")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.667971, 0)
+
+[node name="track1" parent="." instance=ExtResource("3_8j60k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+script = ExtResource("4_5ukr8")
+
+[node name="track" parent="track1" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_5ukr8")
+
+[editable path="track1"]
