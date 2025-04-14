@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://8sxvd6u3tmre"]
+
+[ext_resource type="Texture2D" uid="uid://dkhcrtt41uhkc" path="res://Materials/Textures/GridTexture/PNG/Dark/texture_01.png" id="1_a02cp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go701"]
+albedo_texture = ExtResource("1_a02cp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5a7ea"]
+
+[node name="World" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.82209, 0, 0, 0, 5.82209, 0, 0, 0, 5.82209, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_go701")
+mesh = SubResource("PlaneMesh_5a7ea")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.192608, 0.981276, 0, -0.981276, -0.192608, 0, 5.78522, 0)
