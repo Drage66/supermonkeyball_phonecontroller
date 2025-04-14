@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://8sxvd6u3tmre"]
+[gd_scene load_steps=7 format=3 uid="uid://8sxvd6u3tmre"]
 
 [ext_resource type="Texture2D" uid="uid://dkhcrtt41uhkc" path="res://Materials/Textures/GridTexture/PNG/Dark/texture_01.png" id="1_a02cp"]
 
@@ -6,6 +6,24 @@
 albedo_texture = ExtResource("1_a02cp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5a7ea"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
+sky_top_color = Color(0.205, 0.368, 1, 1)
+sky_horizon_color = Color(0.47451, 0.643137, 0.921569, 1)
+sky_curve = 0.0832178
+ground_bottom_color = Color(0.873, 0.931, 0.975, 1)
+ground_horizon_color = Color(0.47451, 0.643137, 0.921569, 1)
+ground_curve = 0.234254
+
+[sub_resource type="Sky" id="Sky_go701"]
+sky_material = SubResource("ProceduralSkyMaterial_a02cp")
+
+[sub_resource type="Environment" id="Environment_5a7ea"]
+background_mode = 2
+sky = SubResource("Sky_go701")
+tonemap_mode = 3
+glow_enabled = true
+glow_bloom = 0.25
 
 [node name="World" type="Node3D"]
 
@@ -15,6 +33,7 @@ material_override = SubResource("StandardMaterial3D_go701")
 mesh = SubResource("PlaneMesh_5a7ea")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5a7ea")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.192608, 0.981276, 0, -0.981276, -0.192608, 0, 5.78522, 0)
