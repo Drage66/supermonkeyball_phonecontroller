@@ -15,7 +15,13 @@ run/main_scene="uid://8sxvd6u3tmre"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/movie_file="/home/nhlanhla/Documents/Godot/supermonkeyball_phonecontroller/movie.avi"
+
 [physics]
 
+3d/run_on_separate_thread=true
 3d/physics_engine="Jolt Physics"
-jolt_physics_3d/simulation/position_steps=10
+jolt_physics_3d/simulation/velocity_steps=27
+jolt_physics_3d/simulation/position_steps=16

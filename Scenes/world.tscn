@@ -74,7 +74,7 @@ unique_name_in_owner = true
 physics_material_override = SubResource("PhysicsMaterial_k7acu")
 
 [node name="BallCamera" type="Camera3D" parent="Ball"]
-transform = Transform3D(1, 0, 0, 0, 0.863692, 0.504019, 0, -0.504019, 0.863692, 0, 4.78522, 8.2)
+transform = Transform3D(-1, 4.40612e-08, -7.55073e-08, 0, 0.863703, 0.504002, 8.74228e-08, 0.504002, -0.863703, 0, 4.785, -8.2)
 top_level = true
 script = ExtResource("3_5ukr8")
 
@@ -108,7 +108,7 @@ unique_name_in_owner = true
 size = Vector2i(1024, 1024)
 
 [node name="Camera3D" type="Camera3D" parent="debug/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -818, 601, 242)
+transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, -818, 601, -70.06)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 300.0

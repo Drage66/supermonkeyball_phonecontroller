@@ -7,8 +7,8 @@ extends Node3D
 
 func _process(delta: float) -> void:
 	transform.basis = track1.transform.basis
-	var arrow_lines = DebugDraw3D.new_scoped_config().set_thickness(1.0).set_hd_sphere(true).set_center_brightness(0.2).set_viewport(viewport)
-	DebugDraw3D.draw_ray(global_transform.origin, global_transform.basis.x, 2000,Color.RED)
-	DebugDraw3D.draw_ray(global_transform.origin, global_transform.basis.y, 2000,Color.GREEN)
-	DebugDraw3D.draw_ray(global_transform.origin, global_transform.basis.z, 2000,Color.BLUE)
+	var arrow_lines = DebugDraw3D.new_scoped_config().set_thickness(3.0).set_hd_sphere(true).set_center_brightness(1.0).set_viewport(viewport)
+	DebugDraw3D.draw_arrow_ray(global_transform.origin, global_transform.basis.x, 80,Color.RED,0.1)
+	DebugDraw3D.draw_arrow_ray(global_transform.origin, global_transform.basis.y, 80,Color.GREEN,0.1)
+	DebugDraw3D.draw_arrow_ray(global_transform.origin, global_transform.basis.z, 80,Color.BLUE, 0.1)
 	# DebugDraw3D.draw_gizmo(Transform3D(transform.basis * 2000, global_transform.origin))

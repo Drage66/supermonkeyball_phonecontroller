@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 			#data["timestamp"]
 			#data["accuracy"]
 			var data = JSON.parse_string(_orientation_socket.get_packet().get_string_from_utf8())
-			orientation(data)
+			orientation(data,delta)
 			
 			#print("Got data from server: ", socket.get_packet().get_string_from_utf8())
 	# WebSocketPeer.STATE_CLOSING means the socket is closing.
@@ -66,8 +66,8 @@ func _physics_process(delta: float) -> void:
 		set_process(false) # Stop processing.
 
 
-func orientation(orientation_data):
-	var phone_basis = Basis(Quaternion(orientation_data["values"][0],orientation_data["values"][2],orientation_data["values"][1],-orientation_data["values"][3]))
+func orientation(orientation_data, delta):
+	var phone_basis = Basis(Quaternion(-orientation_data["values"][0],-orientation_data["values"][2],orientation_data["values"][1],-orientation_data["values"][3]))
 	# print(orientation_data)
 	# transform.basis = phone_basis
 	#NOTE: Test the slerp weights values and see if i can make it relative to the gyroscope rotation speed
