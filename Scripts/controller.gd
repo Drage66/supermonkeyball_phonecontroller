@@ -7,7 +7,7 @@ var frame_containers = PackedVector3Array([Vector3.ZERO,Vector3.ZERO])
 # Refer to the phone's axis as it uses a different coordinate system, than I would intuit
 # The URL we will connect to.
 # @export var websocket_url = "ws://10.0.0.14:8081"
-@export var websocket_url = "ws://192.168.8.103:8081"
+@export var websocket_url = "ws://192.168.8.192:8081"
 
 # Used to get the orientation of device
 var _orientation_path = "/sensor/connect?type=android.sensor.rotation_vector"
@@ -67,13 +67,10 @@ func _physics_process(delta: float) -> void:
 
 
 func orientation(orientation_data):
-	var phone_basis = Basis(Quaternion(orientation_data["values"][0],orientation_data["values"][2],orientation_data["values"][1],-orientation_data["values"][3]))
+	var phone_basis = Basis(Quaternion(-orientation_data["values"][0],-orientation_data["values"][2],orientation_data["values"][1],-orientation_data["values"][3]))
 	# print(orientation_data)
-	# transform.basis = phone_basis
+	transform.basis = phone_basis
 	#NOTE: Test the slerp weights values and see if i can make it relative to the gyroscope rotation speed
 	# transform.basis = transform.basis.slerp(phone_basis,0.1)
 	# var distance = transform.basis.distance_to(phone_basis)
-	var phone_rot = phone_basis.get_euler().normalized() * 3.0
-	phone_rot = Vector3(phone_rot.z, -1, -phone_rot.x)
-	DebugDraw2D.set_text("ROTA", phone_rot)
-	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space,PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, phone_rot)
+

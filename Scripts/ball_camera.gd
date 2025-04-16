@@ -1,7 +1,7 @@
 @tool
 extends Camera3D
 
-@onready var ball = get_parent()
+@onready var ball = %Ball 
 @onready var cam_offset
 
 func _ready() -> void:

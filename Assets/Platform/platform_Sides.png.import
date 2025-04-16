@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ui0uih1vsdql"
-path.s3tc="res://.godot/imported/texture_04.png-afd7983c0e219c1c998339cf09887e01.s3tc.ctex"
+uid="uid://c70o3eq0cw50i"
+path.s3tc="res://.godot/imported/platform_Sides.png-b2d12daa9b949a126d6ea0fdbe9b3d49.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "62dbff395f861b1e913fe8a8f7f2df09"
+}
 
 [deps]
 
-source_file="res://Materials/Textures/GridTexture/PNG/Dark/texture_04.png"
-dest_files=["res://.godot/imported/texture_04.png-afd7983c0e219c1c998339cf09887e01.s3tc.ctex"]
+source_file="res://Assets/Platform/platform_Sides.png"
+dest_files=["res://.godot/imported/platform_Sides.png-b2d12daa9b949a126d6ea0fdbe9b3d49.s3tc.ctex"]
 
 [params]
 

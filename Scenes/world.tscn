@@ -1,12 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://8sxvd6u3tmre"]
+[gd_scene load_steps=18 format=3 uid="uid://8sxvd6u3tmre"]
 
 [ext_resource type="Texture2D" uid="uid://dkhcrtt41uhkc" path="res://Materials/Textures/GridTexture/PNG/Dark/texture_01.png" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://daukbhpgwxt7v" path="res://Scenes/ball.tscn" id="2_go701"]
 [ext_resource type="Script" uid="uid://cb2w0nrodpi41" path="res://Scripts/ball_camera.gd" id="3_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://c7i21mqng1n2f" path="res://Tracks/track1.glb" id="3_8j60k"]
 [ext_resource type="Script" uid="uid://dfx6e248ao60a" path="res://Scripts/controller.gd" id="4_5ukr8"]
-[ext_resource type="Shader" uid="uid://bpnlhlyij554o" path="res://Scenes/track.tres" id="4_fo5ed"]
-[ext_resource type="Script" uid="uid://1ukikvt24444" path="res://Scripts/controller_dubg_vis.gd" id="7_o06y3"]
+[ext_resource type="PackedScene" uid="uid://npg88bg5oirc" path="res://Scenes/platform.tscn" id="7_k7acu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go701"]
 albedo_texture = ExtResource("1_a02cp")
@@ -34,10 +33,6 @@ glow_bloom = 0.25
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k7acu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo5ed"]
-render_priority = 0
-shader = ExtResource("4_fo5ed")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7acu"]
 cull_mode = 2
 shading_mode = 0
@@ -56,7 +51,6 @@ albedo_color = Color(1, 0.344598, 0.16291, 1)
 viewport_path = NodePath("debug/SubViewport")
 
 [node name="World" type="Node3D"]
-script = ExtResource("4_5ukr8")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.82209, 0, 0, 0, 5.82209, 0, 0, 0, 5.82209, 0, 0, 0)
@@ -75,19 +69,9 @@ unique_name_in_owner = true
 physics_material_override = SubResource("PhysicsMaterial_k7acu")
 
 [node name="BallCamera" type="Camera3D" parent="Ball"]
-transform = Transform3D(-1, 4.40613e-08, -7.55073e-08, 0, 0.863703, 0.504002, 8.74228e-08, 0.504002, -0.863703, 0, 4.785, -8.2)
-transform = Transform3D(1, 0, 0, 0, 0.863692, 0.504019, 0, -0.504019, 0.863692, 0, 4.78522, 8.2)
-transform = Transform3D(1, 0, 0, 0, 0.863692, 0.504019, 0, -0.504019, 0.863692, 0, 4.78522, 8.2)
-transform = Transform3D(1, 0, 0, 0, 0.863692, 0.504019, 0, -0.504019, 0.863692, 0, 4.78522, 8.2)
+transform = Transform3D(-1, 4.40612e-08, -7.55073e-08, 0, 0.863703, 0.504002, 8.74228e-08, 0.504002, -0.863703, 0, 4.785, -8.2)
 top_level = true
 script = ExtResource("3_5ukr8")
-
-[node name="track1" parent="." instance=ExtResource("3_8j60k")]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, 0)
-
-[node name="Track" parent="track1" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_fo5ed")
 
 [node name="debug" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -818, 556, 81)
@@ -98,7 +82,8 @@ mesh = SubResource("BoxMesh_5v1tr")
 skeleton = NodePath("../track2")
 
 [node name="track2" parent="debug" instance=ExtResource("3_8j60k")]
-script = ExtResource("7_o06y3")
+unique_name_in_owner = true
+script = ExtResource("4_5ukr8")
 
 [node name="Track" parent="debug/track2" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_0fj1v")
@@ -111,7 +96,7 @@ unique_name_in_owner = true
 size = Vector2i(1024, 1024)
 
 [node name="Camera3D" type="Camera3D" parent="debug/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -818, 601, 242)
+transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, -818, 601, -84.376)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 300.0
@@ -119,5 +104,10 @@ offset_bottom = 300.0
 texture = SubResource("ViewportTexture_ikia7")
 expand_mode = 2
 
-[editable path="track1"]
+[node name="Platform" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(1, 0, 0, 0, 0.999752, -0.0222686, 0, 0.0222686, 0.999752, 0, -1.70176, 6.2159)
+
+[node name="Platform2" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(1, 0, 0, 0, 0.999752, -0.0222686, 0, 0.0222686, 0.999752, 0, -1.70176, 25.2159)
+
 [editable path="debug/track2"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://daukbhpgwxt7v"]
+[gd_scene load_steps=9 format=3 uid="uid://daukbhpgwxt7v"]
 
 [ext_resource type="Shader" uid="uid://cbw0k37jpwq5f" path="res://Materials/Shaders/ball.gdshader" id="1_d60mj"]
+[ext_resource type="Script" uid="uid://b8u0pmihmjtqc" path="res://Scripts/ball.gd" id="1_ij5cq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f3sb7"]
 
@@ -14,11 +15,21 @@ material = SubResource("ShaderMaterial_70uel")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fj7yv"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d60mj"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(2, 0, 0, 0.127)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ij5cq"]
+material = SubResource("StandardMaterial3D_d60mj")
+
 [node name="Ball" type="RigidBody3D"]
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_f3sb7")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("1_ij5cq")
 
 [node name="Marble" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_f3sb7")
@@ -26,3 +37,7 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_fj7yv")
+
+[node name="RangeIndicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("SphereMesh_ij5cq")
