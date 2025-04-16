@@ -56,6 +56,7 @@ albedo_color = Color(1, 0.344598, 0.16291, 1)
 viewport_path = NodePath("debug/SubViewport")
 
 [node name="World" type="Node3D"]
+script = ExtResource("4_5ukr8")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.82209, 0, 0, 0, 5.82209, 0, 0, 0, 5.82209, 0, 0, 0)
@@ -74,14 +75,25 @@ unique_name_in_owner = true
 physics_material_override = SubResource("PhysicsMaterial_k7acu")
 
 [node name="BallCamera" type="Camera3D" parent="Ball"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+transform = Transform3D(-1, 4.40613e-08, -7.55073e-08, 0, 0.863703, 0.504002, 8.74228e-08, 0.504002, -0.863703, 0, 4.785, -8.2)
+=======
 transform = Transform3D(1, 0, 0, 0, 0.863692, 0.504019, 0, -0.504019, 0.863692, 0, 4.78522, 8.2)
+>>>>>>> parent of fc240a6 (changed physics param some more)
+=======
+transform = Transform3D(1, 0, 0, 0, 0.863692, 0.504019, 0, -0.504019, 0.863692, 0, 4.78522, 8.2)
+>>>>>>> parent of fc240a6 (changed physics param some more)
+=======
+transform = Transform3D(1, 0, 0, 0, 0.863692, 0.504019, 0, -0.504019, 0.863692, 0, 4.78522, 8.2)
+>>>>>>> parent of fc240a6 (changed physics param some more)
 top_level = true
 script = ExtResource("3_5ukr8")
 
 [node name="track1" parent="." instance=ExtResource("3_8j60k")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-script = ExtResource("4_5ukr8")
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, 0)
 
 [node name="Track" parent="track1" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_fo5ed")

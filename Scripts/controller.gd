@@ -73,4 +73,7 @@ func orientation(orientation_data):
 	#NOTE: Test the slerp weights values and see if i can make it relative to the gyroscope rotation speed
 	# transform.basis = transform.basis.slerp(phone_basis,0.1)
 	# var distance = transform.basis.distance_to(phone_basis)
-	transform.basis = phone_basis
+	var phone_rot = phone_basis.get_euler().normalized() * 3.0
+	phone_rot = Vector3(phone_rot.z, -1, -phone_rot.x)
+	DebugDraw2D.set_text("ROTA", phone_rot)
+	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space,PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, phone_rot)
