@@ -1,4 +1,5 @@
 extends Node3D
+@onready var mesh : MeshInstance3D = %track1/Track
 
 # PackedVector3 Array that should contain 2 elements that we cycle through to get the relative frame data
 var frame_containers = PackedVector3Array([Vector3.ZERO,Vector3.ZERO])
@@ -73,7 +74,10 @@ func orientation(orientation_data, delta):
 	#NOTE: Test the slerp weights values and see if i can make it relative to the gyroscope rotation speed
 	# transform.basis = transform.basis.slerp(phone_basis,0.1)
 	# var distance = transform.basis.distance_to(phone_basis)
-	var phone_rot = phone_basis.get_euler().normalized() * 3.0
-	phone_rot = Vector3(phone_rot.z, -1, -phone_rot.x)
+	var phone_rot = phone_basis.get_euler().normalized() * 2.0
+	phone_rot = Vector3(phone_rot.z, phone_rot.y, -phone_rot.x)
+	# var grav = Vector3(phone_rot.x,-phone_rot.z * 0.02,phone_rot.z)
+	mesh.rotation = Vector3(-phone_rot.z,0,phone_rot.x)
 	DebugDraw2D.set_text("ROTA", phone_rot)
 	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space,PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, phone_rot)
+	# PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space,PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, grav)

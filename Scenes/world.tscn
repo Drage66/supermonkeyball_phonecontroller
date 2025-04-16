@@ -86,6 +86,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5
 [node name="Track" parent="track1" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_fo5ed")
 
+[node name="StaticBody3D" parent="track1/Track" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.884222, 0)
+top_level = true
+
 [node name="debug" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -818, 556, 81)
 

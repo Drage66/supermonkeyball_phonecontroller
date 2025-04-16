@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://bpnlhlyij554o"]
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bpnlhlyij554o"]
 
 [ext_resource type="Texture2D" uid="uid://0ox8nbbmgcd5" path="res://Materials/Textures/GridTexture/PNG/Dark/texture_06.png" id="1_w1jgp"]
 
@@ -7,6 +7,17 @@ texture = ExtResource("1_w1jgp")
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_w66wy"]
 input_name = "uv"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_w1jgp"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVec4Parameter" id="VisualShaderNodeVec4Parameter_f5vof"]
+parameter_name = "Vector4Parameter"
+qualifier = 2
+default_value_enabled = true
+default_value = Vector4(0.3, 0.2, 0.5, 1)
+
+[sub_resource type="VisualShaderNodeRotationByAxis" id="VisualShaderNodeRotationByAxis_uv15w"]
 
 [resource]
 code = "shader_type spatial;
@@ -32,7 +43,13 @@ void fragment() {
 }
 "
 flags/unshaded = true
-nodes/vertex/0/position = Vector2(580, 240)
+nodes/vertex/0/position = Vector2(1060, 220)
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_w1jgp")
+nodes/vertex/2/position = Vector2(-420, 60)
+nodes/vertex/3/node = SubResource("VisualShaderNodeVec4Parameter_f5vof")
+nodes/vertex/3/position = Vector2(-1020, 360)
+nodes/vertex/4/node = SubResource("VisualShaderNodeRotationByAxis_uv15w")
+nodes/vertex/4/position = Vector2(200, 260)
 nodes/fragment/0/position = Vector2(760, 160)
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_g57mk")
 nodes/fragment/4/position = Vector2(-580, 300)
