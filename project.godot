@@ -18,4 +18,5 @@ config/icon="res://icon.svg"
 [physics]
 
 3d/physics_engine="Jolt Physics"
-jolt_physics_3d/simulation/position_steps=10
+jolt_physics_3d/simulation/velocity_steps=20
+jolt_physics_3d/simulation/position_steps=20

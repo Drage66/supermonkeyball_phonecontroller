@@ -6,7 +6,7 @@ var frame_containers = PackedVector3Array([Vector3.ZERO,Vector3.ZERO])
 # We calibrate the models to be adjusted to the phones formation
 # Refer to the phone's axis as it uses a different coordinate system, than I would intuit
 # The URL we will connect to.
-# @export var websocket_url = "ws://10.0.0.14:8081"
+# @export var websocket_url = "ws://10.0.0.10:8081"
 @export var websocket_url = "ws://192.168.8.192:8081"
 
 # Used to get the orientation of device
@@ -21,11 +21,12 @@ var _orientation_socket = WebSocketPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Engine.time_scale = 3.0
 # Initiate connection to the given URL.
 	_orientation_socket.connect_to_url("%s%s"%[websocket_url,_orientation_path])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	# transform.origin = Vector3(randf_range(0,10),randf_range(0,10),randf_range(0,10))
 	# var arrow_lines = DebugDraw3D.new_scoped_config().set_thickness(0.02).set_hd_sphere(true).set_center_brightness(1)
 	# DebugDraw3D.draw_arrow_ray(global_position,transform.basis.x,2,Color.RED,0.05)
@@ -73,4 +74,3 @@ func orientation(orientation_data):
 	#NOTE: Test the slerp weights values and see if i can make it relative to the gyroscope rotation speed
 	# transform.basis = transform.basis.slerp(phone_basis,0.1)
 	# var distance = transform.basis.distance_to(phone_basis)
-

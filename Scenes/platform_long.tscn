@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbfqw4gcc620r"]
+
+[ext_resource type="Shader" uid="uid://cdgiw5kd1xjg8" path="res://Materials/Shaders/range_orb.gdshader" id="1_8q6su"]
+[ext_resource type="Script" uid="uid://d0x3w3pyke36x" path="res://Scripts/platform.gd" id="1_p8t4t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlqre"]
+render_priority = 0
+shader = ExtResource("1_8q6su")
+shader_parameter/color = Color(0.92, 0.27, 0.2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_he7e1"]
+material = SubResource("ShaderMaterial_mlqre")
+
+[node name="PlatformLong" type="Node3D"]
+script = ExtResource("1_p8t4t")
+
+[node name="RangeOrbs" type="Node3D" parent="."]
+
+[node name="RangeOrb1" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -61)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb2" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -51)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb3" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb4" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb5" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb6" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb7" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb8" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb9" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb10" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb11" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb12" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="RangeOrb13" type="MeshInstance3D" parent="RangeOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 59)
+mesh = SubResource("SphereMesh_he7e1")
+skeleton = NodePath("../..")
+
+[node name="Platform" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(43.6484, 7.49707, 131.639)

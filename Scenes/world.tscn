@@ -1,24 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://8sxvd6u3tmre"]
+[gd_scene load_steps=16 format=3 uid="uid://8sxvd6u3tmre"]
 
-[ext_resource type="Texture2D" uid="uid://dkhcrtt41uhkc" path="res://Materials/Textures/GridTexture/PNG/Dark/texture_01.png" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://daukbhpgwxt7v" path="res://Scenes/ball.tscn" id="2_go701"]
 [ext_resource type="Script" uid="uid://cb2w0nrodpi41" path="res://Scripts/ball_camera.gd" id="3_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://c7i21mqng1n2f" path="res://Tracks/track1.glb" id="3_8j60k"]
 [ext_resource type="Script" uid="uid://dfx6e248ao60a" path="res://Scripts/controller.gd" id="4_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://dbfqw4gcc620r" path="res://Scenes/platform_long.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://npg88bg5oirc" path="res://Scenes/platform.tscn" id="7_k7acu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go701"]
-albedo_texture = ExtResource("1_a02cp")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_5a7ea"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 sky_top_color = Color(0.205, 0.368, 1, 1)
 sky_horizon_color = Color(0.47451, 0.643137, 0.921569, 1)
 sky_curve = 0.0832178
-ground_bottom_color = Color(0.873, 0.931, 0.975, 1)
-ground_horizon_color = Color(0.47451, 0.643137, 0.921569, 1)
-ground_curve = 0.234254
+ground_bottom_color = Color(0.12549, 0.364706, 0.662745, 1)
+ground_horizon_color = Color(0.652251, 0.790517, 0.977805, 1)
 
 [sub_resource type="Sky" id="Sky_go701"]
 sky_material = SubResource("ProceduralSkyMaterial_a02cp")
@@ -29,9 +23,11 @@ sky = SubResource("Sky_go701")
 tonemap_mode = 3
 tonemap_exposure = 0.7
 glow_enabled = true
-glow_bloom = 0.25
+glow_bloom = 0.2
+glow_blend_mode = 1
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k7acu"]
+friction = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7acu"]
 cull_mode = 2
@@ -52,12 +48,6 @@ viewport_path = NodePath("debug/SubViewport")
 
 [node name="World" type="Node3D"]
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.82209, 0, 0, 0, 5.82209, 0, 0, 0, 5.82209, 0, 0, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_go701")
-mesh = SubResource("PlaneMesh_5a7ea")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5a7ea")
 
@@ -69,7 +59,7 @@ unique_name_in_owner = true
 physics_material_override = SubResource("PhysicsMaterial_k7acu")
 
 [node name="BallCamera" type="Camera3D" parent="Ball"]
-transform = Transform3D(-1, 4.40612e-08, -7.55073e-08, 0, 0.863703, 0.504002, 8.74228e-08, 0.504002, -0.863703, 0, 4.785, -8.2)
+transform = Transform3D(-1, 5.99907e-08, -6.35914e-08, 0, 0.727401, 0.686213, 8.74228e-08, 0.686213, -0.727401, 0, 14.3048, -15.1634)
 top_level = true
 script = ExtResource("3_5ukr8")
 
@@ -105,9 +95,33 @@ texture = SubResource("ViewportTexture_ikia7")
 expand_mode = 2
 
 [node name="Platform" parent="." instance=ExtResource("7_k7acu")]
-transform = Transform3D(1, 0, 0, 0, 0.999752, -0.0222686, 0, 0.0222686, 0.999752, 0, -1.70176, 6.2159)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.32185, 2.19772)
 
 [node name="Platform2" parent="." instance=ExtResource("7_k7acu")]
-transform = Transform3D(1, 0, 0, 0, 0.999752, -0.0222686, 0, 0.0222686, 0.999752, 0, -1.70176, 25.2159)
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 6.58375e-07, -6.71617, 9.61423)
+
+[node name="Platform3" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 1.30737e-06, -12.7539, 16.9251)
+
+[node name="Platform4" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 1.96575e-06, -19.7145, 24.3416)
+
+[node name="Platform5" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 2.60886e-06, -26.1602, 31.5862)
+
+[node name="Platform6" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 3.26723e-06, -31.8652, 39.0027)
+
+[node name="Platform7" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 3.9065e-06, -37.4997, 46.204)
+
+[node name="Platform8" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(4.39046e-08, 1.00442, -8.78093e-08, 1.00442, -4.39046e-08, 0, -3.83826e-15, -8.78093e-08, -1.00442, 4.54961e-06, -43.2995, 53.4486)
+
+[node name="Platform9" parent="." instance=ExtResource("7_k7acu")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 5.20799e-06, -48.8065, 60.8651)
+
+[node name="PlatformLong" parent="." instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -68, 119)
 
 [editable path="debug/track2"]
