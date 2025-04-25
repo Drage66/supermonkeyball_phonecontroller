@@ -59,7 +59,7 @@ unique_name_in_owner = true
 physics_material_override = SubResource("PhysicsMaterial_k7acu")
 
 [node name="BallCamera" type="Camera3D" parent="Ball"]
-transform = Transform3D(-1, 5.99907e-08, -6.35914e-08, 0, 0.727401, 0.686213, 8.74228e-08, 0.686213, -0.727401, 0, 14.3048, -15.1634)
+transform = Transform3D(-1, 5.99906e-08, -6.35914e-08, 0, 0.727401, 0.686213, 8.74228e-08, 0.686213, -0.727401, 0, 14.3048, -15.1634)
 top_level = true
 script = ExtResource("3_5ukr8")
 

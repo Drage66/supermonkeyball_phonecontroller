@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbfqw4gcc620r"]
+[gd_scene load_steps=7 format=4 uid="uid://dbfqw4gcc620r"]
 
 [ext_resource type="Shader" uid="uid://cdgiw5kd1xjg8" path="res://Materials/Shaders/range_orb.gdshader" id="1_8q6su"]
 [ext_resource type="Script" uid="uid://d0x3w3pyke36x" path="res://Scripts/platform.gd" id="1_p8t4t"]
@@ -10,6 +10,20 @@ shader_parameter/color = Color(0.92, 0.27, 0.2, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_he7e1"]
 material = SubResource("ShaderMaterial_mlqre")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8q6su"]
+_surfaces = [{
+"aabb": AABB(-21.8242, -2.55322, -65.8195, 43.6484, 5.10645, 131.639),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AJiuwQBoI8CQo4NCAJiuwQBoI8CQo4PCAJiuwQBoI0CQo4PCAJiuQQBoI8CQo4PCAJiuwQBoI8CQo4PCAJiuwQBoI8CQo4NCAJiuwQBoI0CQo4PCAJiuwQBoI8CQo4PCAJiuQQBoI8CQo4PCAJiuwQBoI0CQo4PCAJiuwQBoI0CQo4NCAJiuwQBoI8CQo4NCAJiuwQBoI8CQo4NCAJiuwQBoI0CQo4NCAJiuQQBoI0CQo4NCAJiuQQBoI0CQo4NCAJiuwQBoI0CQo4NCAJiuwQBoI0CQo4PCAJiuwQBoI8CQo4NCAJiuQQBoI8CQo4NCAJiuQQBoI8CQo4PCAJiuQQBoI0CQo4NCAJiuQQBoI8CQo4NCAJiuwQBoI8CQo4NCAJiuQQBoI8CQo4PCAJiuQQBoI8CQo4NCAJiuQQBoI0CQo4NCAJiuQQBoI8CQo4PCAJiuQQBoI0CQo4PCAJiuwQBoI0CQo4PCAJiuwQBoI0CQo4PCAJiuQQBoI0CQo4PCAJiuQQBoI0CQo4NCAJiuQQBoI0CQo4NCAJiuQQBoI0CQo4PCAJiuQQBoI8CQo4PCAAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p8t4t"]
+points = PackedVector3Array(21.8242, 2.55322, 65.8195, 21.8242, -2.55322, 65.8195, 21.8242, 2.55322, -65.8195, -21.8242, 2.55322, 65.8195, -21.8242, -2.55322, 65.8195, 21.8242, -2.55322, -65.8195, -21.8242, 2.55322, -65.8195, -21.8242, -2.55322, -65.8195)
 
 [node name="PlatformLong" type="Node3D"]
 script = ExtResource("1_p8t4t")
@@ -82,5 +96,15 @@ mesh = SubResource("SphereMesh_he7e1")
 skeleton = NodePath("../..")
 
 [node name="Platform" type="CSGBox3D" parent="."]
+visible = false
 use_collision = true
-size = Vector3(43.6484, 7.49707, 131.639)
+collision_priority = 40.81
+size = Vector3(43.6484, 5.10645, 131.639)
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_8q6su")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBakedMeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBakedMeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_p8t4t")

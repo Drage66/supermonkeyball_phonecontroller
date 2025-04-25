@@ -17,6 +17,10 @@ config/icon="res://icon.svg"
 
 [physics]
 
+common/physics_ticks_per_second=120
+common/max_physics_steps_per_frame=32
 3d/physics_engine="Jolt Physics"
-jolt_physics_3d/simulation/velocity_steps=20
-jolt_physics_3d/simulation/position_steps=20
+jolt_physics_3d/simulation/velocity_steps=30
+jolt_physics_3d/simulation/position_steps=40
+jolt_physics_3d/simulation/continuous_cd_movement_threshold=0.16
+jolt_physics_3d/simulation/continuous_cd_max_penetration=0.14

@@ -15,7 +15,7 @@ shader_parameter/color = Color(0.860841, 0.41177, 0.22509, 1)
 material = SubResource("ShaderMaterial_70uel")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fj7yv"]
-radius = 0.528668
+radius = 0.642113
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yk4cr"]
 render_priority = 0
@@ -25,7 +25,7 @@ shader = ExtResource("3_376qj")
 material = SubResource("ShaderMaterial_yk4cr")
 
 [node name="Ball" type="RigidBody3D"]
-mass = 0.005
+mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_f3sb7")
 can_sleep = false
 continuous_cd = true

@@ -9,10 +9,10 @@ func _ready() -> void:
 	range_orbs_array = range_orbs.get_children()
 
 func _process(delta: float) -> void:
-	for range_orb in range_orbs_array:
-		if ball.global_position.distance_to(range_orb.global_position) < ball_range:
+	# for range_orb in range_orbs_array:
+		# if ball.global_position.distance_to(range_orb.global_position) < ball_range:
 			# transform.basis = vis_rep.transform.basis
 			# transform.basis = transform.basis.slerp(vis_rep.transform.basis, 0.2)
-			transform.basis = lerp(transform.basis, vis_rep.transform.basis,0.2)
+	transform.basis = lerp(transform.basis, vis_rep.transform.basis,0.05)
 
 
